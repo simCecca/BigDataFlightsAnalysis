@@ -1,0 +1,31 @@
+doctype html
+html
+	head
+		title Best route
+	
+	body
+		form(method="get", action="/routes")
+			select(name="from")
+				each airport, i in airportNames
+					option(value='"'+airport+'"')= airport
+			
+			select(name="to")
+				each airport, i in airportNames
+					option(value='"'+airport+'"')= airport
+			
+			input(type="submit", value="go!")
+			
+			
+		table(border="1")
+			tr
+				th Origin
+				th Destination
+				th Duration
+			each route, i in routes
+				tr
+					td= route.start
+					td= route.dest
+					td= route.duration
+		p Total duration: #{totDuration} (Adding 2 hours for each stopover)
+		br
+		hr
